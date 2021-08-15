@@ -61,7 +61,7 @@ export default {
                     &:hover
                         background #e7e7e7
                 .menu-item-active
-                    color #d33a31
+                    color rgba(0,163,216,1)
                     background #e2e2e2
                 .menu-title
                     font-size 1rem

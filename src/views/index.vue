@@ -6,7 +6,7 @@
         <IndexMenu />
       </div>
       <div class="content" id="page-content">
-        <router-view></router-view>
+        <router-view class="router-view-center"></router-view>
       </div>
     </div>
   </div>
@@ -38,4 +38,7 @@ export default {
       overflow-y auto
       min-width 43.75rem
       margin-bottom 3.75rem
+      .router-view-center
+        max-width 62.5rem
+        margin auto
 </style>
