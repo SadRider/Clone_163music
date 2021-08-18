@@ -1,7 +1,7 @@
 <template>
   <el-carousel :interval="4000" type="card" class="banner-carousel">
     <el-carousel-item v-for="banner in banners" :key="banner.scm">
-      <img :src="banner.imageUrl" class="banner-img">
+      <img v-lazy="banner.imageUrl" class="banner-img">
     </el-carousel-item>
   </el-carousel>
 </template>
@@ -37,6 +37,7 @@ created() {
 .banner-carousel
   /deep/.el-carousel__container//深度选择器，修改elementui样式
     height 12.5rem
+    width 100%
 
   .banner-img
     width 100%

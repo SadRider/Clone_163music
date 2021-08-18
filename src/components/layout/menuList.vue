@@ -38,7 +38,7 @@ export default {
 
 <style lang='stylus' scoped>
 .menu
-    width 15.625rem
+    width 18.75rem
     height 100%
     display flex
     flex-direction column

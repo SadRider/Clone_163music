@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2743794 */
-  src: url('../Iconfont/iconfont.woff2?t=1628937504062') format('woff2'),
-       url('../Iconfont/iconfont.woff?t=1628937504062') format('woff'),
-       url('../Iconfont/iconfont.ttf?t=1628937504062') format('truetype');
+  src: url('../Iconfont/iconfont.woff2?t=1629018510437') format('woff2'),
+       url('../Iconfont/iconfont.woff?t=1629018510437') format('woff'),
+       url('../Iconfont/iconfont.ttf?t=1629018510437') format('truetype');
 }
 
 .iconfont {
@@ -13,7 +13,48 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* .icon-play-fill:before {
+
+.icon-shengyin:before {
+  content: "\e615";
+}
+
+.icon-geciweidianji:before {
+  content: "\e727";
+}
+
+.icon-suijibofang:before {
+  content: "\e622";
+}
+
+.icon-xunhuanbofang:before {
+  content: "\e6cc";
+}
+
+.icon-shunxubofang:before {
+  content: "\e6a1";
+}
+
+.icon-open:before {
+  content: "\e618";
+}
+
+.icon-next:before {
+  content: "\e654";
+}
+
+.icon-previous:before {
+  content: "\e655";
+}
+
+.icon-play:before {
+  content: "\e717";
+}
+
+.icon-stop:before {
+  content: "\e71c";
+}
+
+.icon-play-fill:before {
   content: "\e64d";
 }
 
@@ -35,5 +76,5 @@
 
 .icon-Homehomepagemenu:before {
   content: "\e9db";
-} */
+}
 

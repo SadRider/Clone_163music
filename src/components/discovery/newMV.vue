@@ -4,12 +4,12 @@
     <div class="mvlist-wrapper">
         <div class="mvlist" v-for="mv in MVList" :key="mv.id">
             <div class="img-wrapper">
-                <img :src="mv.picUrl" class="img-content">
+                <img v-lazy="mv.picUrl" class="img-content">
                 <span class="iconfont icon_play">&#xe64d;</span>
             </div>
             <div class="mv-content">
                 <p class="mv-name">{{mv.name}}</p>
-                <p class="artists">{{mv.name}}</p>
+                <p class="artists">{{mv.artistName}}</p>
             </div>
         </div>
     </div>
@@ -28,8 +28,13 @@ export default {
     methods: {
         getPersonalizedMv(){
             getPersonalizedMv().then(res=>{
-                // console.log(res)
-                this.MVList = res.result
+                const newData = res.result.map(item=>({
+                    id:item.id,
+                    name:item.name,
+                    picUrl:item.picUrl,
+                    artistName:item.artistName
+                }))
+                this.MVList = newData
             })
         }
     },
@@ -47,7 +52,6 @@ export default {
 .mvlist-wrapper
     display flex
     width 100%
-    height 12rem
     .mvlist
         flex 1
         width 100%
@@ -55,12 +59,13 @@ export default {
         box-sizing border-box
         padding 0.625rem
         .img-wrapper
-            background-color green
-            width 14.375rem
-            height 8.085rem
+            width 17.5rem
+            height 10rem
+            border-radius 0.5rem
             position relative
             left 50%
             transform translateX(-50%)
+            overflow hidden
           .img-content
                 width 100%
                 border-radius 0.5rem
@@ -74,12 +79,20 @@ export default {
                 font-size 1.5rem
                 opacity 0
                 text-align center
-                height 8.085rem
-                line-height 8.085rem
+                height 11rem
+                line-height 11rem
                 transition all 0.3s
         &:hover
             .icon_play
                 opacity 0.8
         .mv-content
-            font-size 0.8rem
+            width 17.5rem
+            .mv-name
+                font-size 0.8rem
+                overflow :hidden
+                white-space :nowrap
+                text-overflow :ellipsis
+            .artists
+                font-size 0.4rem
+                color #ccc
 </style>

@@ -1,15 +1,15 @@
 <template>
     <div class="header">
         <div class="home">
-            <!-- <i class="el-icon-s-home font"></i> -->
             <router-link to='/'>
                 <span class="iconfont font">&#xe9db;</span>
             </router-link>
         </div>
-        <router-link to='/'>
-            <div class="name">好耶音乐</div>
-        </router-link>
-
+        <div class="title">
+            <router-link to='/'>
+                <span class="name">好耶音乐</span>
+            </router-link>
+        </div>
     </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 .header
     display flex
     // justify-content space-between
-    height 3.125rem
+    height 4rem
     background-color rgba(0,163,216,1)
     padding 0.3125rem 1rem
     .home
@@ -38,8 +38,13 @@ export default {
             height 2.5rem
             line-height 2.5rem
             padding 0 0.25rem
-    .name
-        font-size 2rem
-        color #fff
-        margin auto 1rem
+    .title
+        height 2.5rem
+        margin auto 0
+        .name
+            color #fff
+            font-size 2rem
+            height 2.5rem
+            line-height 2.5rem
+            padding 0 0.25rem
 </style>

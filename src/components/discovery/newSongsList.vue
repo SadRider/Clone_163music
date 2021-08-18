@@ -1,15 +1,16 @@
 <template>
     <div class="songlist-container">
         <p class="title">最新音乐</p>
-        <div class="songlist-wrapper" v-for="(page,index) in pages" :key="index">
-            <div class="songlist" v-for="songs in page" :key="songs.id">
+        <div class="songlist-wrapper">
+            <div class="songlist" v-for="(songs,index) in songsList" :key="songs.id" @click="OnclickSong(songs.id)">
+                <span class="num">{{index+1}}</span>
                 <div class="img-wrapper">
-                    <img :src="songs.picUrl" class="img-content">
+                    <img v-lazy="songs.picUrl" class="img-content">
                     <span class="iconfont icon_play">&#xe64d;</span>
                 </div>
                 <div class="song-content">
                     <p class="song-name">{{songs.name}}</p>
-                    <p class="artists">{{songs.name}}</p>
+                    <p class="artists">{{songs.artist}}</p>
                 </div>
             </div>
         </div>
@@ -28,22 +29,24 @@ export default {
     methods: {
         getNewSongs(){
             getNewSongs().then(res=>{
-                console.log(res)
-                this.songsList = res.result
+                // this.songsList = res.result
+                const newData=res.result.map(item=>({
+                    id:item.id,
+                    name:item.name,
+                    picUrl:item.picUrl,
+                    artist:item.song.artists.map(artItem=>artItem.name).join('，'),
+                    company:item.song.album.company
+                }))
+                this.songsList = newData
             })
         },
-    },
-    computed:{
-        pages(){
-            const pages = []
-            this.songsList.forEach((item,index)=>{
-                const page = Math.floor(index/5)
-                if(!pages[page]){
-                    pages[page] = []
-                }
-                pages[page].push(item)
+        OnclickSong(index){
+            //将用户点击的歌曲列表下标合当前的歌曲列表传递给store
+            this.$store.commit({
+                type:'player/selectSongByIndex',
+                index:index,
+                list:this.songsList
             })
-            return pages
         }
     },
     created() {
@@ -57,14 +60,23 @@ export default {
     font-size 1.5rem
     margin 0.3rem
 .songlist-wrapper
-    width 50%
+    display flex
+    flex-direction column
+    flex-wrap wrap
+    width 100%
+    height 31.25rem
     float left
+    cursor pointer
     .songlist
-        position relative
-        width 100%
+        display flex
+        width 50%
         height 6.25rem
         box-sizing border-box
         padding 0.625rem
+        .num
+            width 1.5rem
+            height 5rem
+            line-height 5rem
         .img-wrapper
             background-color green
             width 5rem
@@ -82,13 +94,17 @@ export default {
                 left 0
                 color red
                 font-size 2rem
-                opacity 0.8
+                opacity 0.7
                 text-align center
                 height 5rem
                 line-height 5rem
         &:hover
-            background-color #ccc
+            background-color #ededed
         .song-content
-            float left
-            margin 1.1875rem
+            margin 1rem
+            .song-name
+                font-size 1rem
+            .artists
+                font-size 0.8rem
+                color #ccc
 </style>

@@ -8,7 +8,7 @@
                         <span class="desc">{{item.copywriter}}</span>
                     </div>
                     <div class="list-img">
-                        <img :src="item.picUrl" class="banner-img">
+                        <img v-lazy="item.picUrl" class="banner-img">
                     </div>
                     <span class="iconfont icon_play">&#xe64d;</span>
                     <p class="list-name">{{item.name}}</p>
@@ -43,7 +43,7 @@ export default {
     methods: {
         getRecommendList(){
             getRecommendList().then(res=>{
-                // console.log(res)
+                console.log(res)
                 this.recommendlist = res.result
             })
         }
