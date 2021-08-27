@@ -32,11 +32,9 @@ const getList = function(mode,sequencePlayList){
 }
 
 const getIndex = function(musicList,currentSongID){
-    console.log("currentSongID",currentSongID)
     let id = -1
     musicList.map((item,index)=>{
         if(currentSongID === item.id){
-            console.log(item.id,index)
             id = index
         }
     })
@@ -77,11 +75,16 @@ export default{
             //歌单列表的原始数据需要一直保留，不能被其他事件影响到歌单顺序
             state.sequencePlayList = [...payload.list]
             state.musicList = getList(state.mode,state.sequencePlayList)
-            state.currentIndex = getIndex(state.musicList,payload.index)
+            state.currentIndex = getIndex(state.musicList,payload.id)
+        },
+        selectSongOnSuggest(state,payload){
+            state.playing = true
+            state.sequencePlayList.push(payload.song)
+            state.musicList = getList(state.mode,state.sequencePlayList)
+            state.currentIndex = getIndex(state.musicList,payload.id)
         },
         setPlaying(state,payload){
             state.playing = payload.value
-            // console.log("state.playing",state.playing)
         },
         changePlayMode(state,payload){
             //修改播放模式
@@ -92,6 +95,7 @@ export default{
         },
 
         PrevNext(state){
+                console.log(state.currentIndex)
                 state.currentIndex -= 1
                 if(state.currentIndex<0){
                     state.currentIndex = state.musicList.length-1

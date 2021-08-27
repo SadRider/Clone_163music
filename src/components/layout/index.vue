@@ -6,13 +6,12 @@
         <IndexMenu />
       </div>
       <div class="content" id="page-content">
-        <router-view class="router-view-center"></router-view>
+        <router-view class="router-view-center" :key="$route.fullPath"></router-view>
       </div>
     </div>
     <div class="player-container">
-      <Player @isShowList="isShowList"/>
+      <Player />
     </div>
-    <MusicList :isShow="drawer"/>
   </div>
 </template>
 
@@ -20,24 +19,20 @@
 import IndexHeader from './header.vue'
 import IndexMenu from './menuList.vue'
 import Player from './player.vue'
-import MusicList from './musicList.vue'
+
 export default {
     name:'Index',
     components:{
         IndexHeader,
         IndexMenu,
         Player,
-        MusicList
     },
     data() {
       return {
-        drawer:false
       }
     },
     methods: {
-      isShowList(data){
-        this.drawer = data
-      }
+
     },
 }
 </script>
@@ -51,12 +46,13 @@ export default {
     height calc(100% - 3.125rem)
     // background pink
     .layout-menu
-      height calc(100% - 3.125rem)
+      height calc(100% - 6.2rem)
     .content
       flex 1
+      overflow hidden
       overflow-y auto
       min-width 43.75rem
-      margin-bottom 5rem
+      margin-bottom 6rem
       .router-view-center
         max-width 75rem
         margin auto

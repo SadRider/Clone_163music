@@ -40,11 +40,11 @@ export default {
                 this.songsList = newData
             })
         },
-        OnclickSong(index){
+        OnclickSong(id){
             //将用户点击的歌曲列表下标合当前的歌曲列表传递给store
             this.$store.commit({
                 type:'player/selectSongByIndex',
-                index:index,
+                id,
                 list:this.songsList
             })
         }
@@ -56,6 +56,8 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~@/assets/preset/varibles.styl';
+
 .title
     font-size 1.5rem
     margin 0.3rem
@@ -78,7 +80,6 @@ export default {
             height 5rem
             line-height 5rem
         .img-wrapper
-            background-color green
             width 5rem
             height 5rem
             float left 
@@ -99,12 +100,12 @@ export default {
                 height 5rem
                 line-height 5rem
         &:hover
-            background-color #ededed
+            background-color $activeColor
         .song-content
             margin 1rem
             .song-name
                 font-size 1rem
             .artists
                 font-size 0.8rem
-                color #ccc
+                color $mainColor
 </style>

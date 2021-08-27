@@ -7,7 +7,7 @@ export const request = createBaseInstance()
 function createBaseInstance() {
     const instance = axios.create({
         baseURL: BASE_URL,
-        timeout: 1000
+        // timeout: 1000
     })
 
     // 拦截器
@@ -15,6 +15,7 @@ function createBaseInstance() {
         return config
     }, err => {
         confirm(err.message, '出错啦~')
+        console.log('出错啦~')
         throw err
     }),
 

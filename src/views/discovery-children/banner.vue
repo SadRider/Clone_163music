@@ -36,7 +36,7 @@ created() {
 <style lang="stylus" scoped>
 .banner-carousel
   /deep/.el-carousel__container//深度选择器，修改elementui样式
-    height 12.5rem
+    height 15rem
     width 100%
 
   .banner-img

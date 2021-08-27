@@ -1,4 +1,5 @@
 <template>
+<!-- 发现音乐页面 -->
 <div class="discovery">
     <Banners/>
     <RecommendList/>
@@ -8,10 +9,10 @@
 </template>
 
 <script>
-import Banners from '../components/discovery/banner.vue'
-import RecommendList from '../components/discovery/recommendList.vue'
-import NewSongsList from '../components/discovery/newSongsList.vue'
-import NewMV from '../components/discovery/newMV.vue'
+import Banners from './discovery-children/banner.vue'
+import RecommendList from './discovery-children/recommendList.vue'
+import NewSongsList from './discovery-children/newSongsList.vue'
+import NewMV from './discovery-children/newMV.vue'
 export default {
   name:'discovery',
   components:{
@@ -26,4 +27,5 @@ export default {
 <style lang="stylus" scoped>
 .discovery
   padding 2rem 2rem
+  position relative
 </style>

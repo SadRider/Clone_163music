@@ -14,6 +14,14 @@
 }
 
 
+.icon-zhuanjiguangpan:before {
+  content: "\e64b";
+}
+
+.icon-geshou:before {
+  content: "\e606";
+}
+
 .icon-shengyin:before {
   content: "\e615";
 }
@@ -77,4 +85,3 @@
 .icon-Homehomepagemenu:before {
   content: "\e9db";
 }
-
